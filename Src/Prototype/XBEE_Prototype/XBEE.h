@@ -1,20 +1,23 @@
 //TODO: This should be taken care of somewhere else.
-enum Platform {Uno, Leonardo, Mega, Due, Digispark, Default}
-
-struct ChipDef_t {
-	Platform platform;
-	int numSerial;
-}
+#include "Arduino.h"
  
 class XBEE
 {
-
+  
 public:
+
+
+  enum Platform {Uno, Leonardo, Mega, Due, Digispark, Default};
+
+  struct ChipDef_t {
+    Platform boardType;
+    int numSerial;
+  };
 
 	/**
 	* Sets up the XBEE interface. Taking into account board type.
 	*/
-	void Initialize(int baud, int serialInterface);
+	void Initialize(long baud, int serialInterface);
 
 	/**
 	* Updates and reads from the xbee to the internal buffer.
@@ -44,20 +47,25 @@ public:
 	int ReadLine(char& buffer); 
 
 
-	int ReadCommand(String command, String& action)
+	//int ReadCommand(String command, String& action)
 
 	Platform getBoardType();
 
 private:
 
-	char * line;
-	int lineLength;
+  char * line;
+  int lineLength;
 
 
-	//Buffers used to read from and write to the XBEE.
-	char * outBuffer;
-	char * inBuffer;
+  //Buffers used to read from and write to the XBEE.
+  char * outBuffer;
+  char * inBuffer;
 
-	static Platform boardType;
+  static Platform boardType;
+
+  static struct ChipDef_t chipDef;
+
+  static HardwareSerial* cmdPort;
+
 
 };
