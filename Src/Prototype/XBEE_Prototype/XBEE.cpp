@@ -75,27 +75,27 @@ void XBEE::Initialize(long baud, int serialInterface)
   else if(serialInterface == 2)
     cmdPort = (HardwareSerial*)&Serial1;
   else if(serialInterface == 3)
-    cmdPort = (HardwareSerial*)&Serial1;
+    cmdPort = (HardwareSerial*)&Serial2;
   else if(serialInterface == 4)
-    cmdPort = (HardwareSerial*)&Serial1;
+    cmdPort = (HardwareSerial*)&Serial3;
   else if(serialInterface == 5)
-    cmdPort = (HardwareSerial*)&Serial1;
+    cmdPort = (HardwareSerial*)&Serial4;
            
 #elif __SAM3X8E__
     
   else if(serialInterface == 2)
     cmdPort = (HardwareSerial*)&Serial1;
   else if(serialInterface == 3)
-    cmdPort = (HardwareSerial*)&Serial1;
+    cmdPort = (HardwareSerial*)&Serial2;
   else if(serialInterface == 4)
-    cmdPort = (HardwareSerial*)&Serial1;
+    cmdPort = (HardwareSerial*)&Serial3;
   else if(serialInterface == 5)
-    cmdPort = (HardwareSerial*)&Serial1;
+    cmdPort = (HardwareSerial*)&Serial4;
 
 #endif
 
-
 }
+
 
 
 
