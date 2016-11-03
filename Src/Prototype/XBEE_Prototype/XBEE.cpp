@@ -114,7 +114,7 @@ void XBEE::Update()
 
   while(!output->isEmpty())
   {
-    output->remove(&writeByte);
+    output->remove(*writeByte);
     cmdPort->write(*writeByte);
   }
 
@@ -122,6 +122,12 @@ void XBEE::Update()
   
 }
 
+int XBEE::isAvailable()
+{
+
+  return input->getCount();
+  
+}
 
 void XBEE::Write(char* buffer, int length)
 {
@@ -138,6 +144,24 @@ void XBEE::Write(char* buffer, int length)
   
   }
 
+}
+
+int XBEE::Read(char* buffer, int length)
+{
+  int count = 0;
+  for(; count < length && input->getCount() > 0; count++)
+  {
+
+    uint8_t * readByte;
+    input->remove(*readByte);
+    cmdPort->write(*readByte);
+    
+    buffer[count] = *((char*)readByte);
+    
+  }
+
+  return (count - 1);
+  
 }
 
 

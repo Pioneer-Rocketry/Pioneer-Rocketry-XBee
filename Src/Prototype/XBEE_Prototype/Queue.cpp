@@ -78,3 +78,11 @@ bool Queue::isEmpty()
 {
 	return back == front && count == 0;
 }
+
+int Queue::getCount()
+{
+
+  return count;
+  
+}
+

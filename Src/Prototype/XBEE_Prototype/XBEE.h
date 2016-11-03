@@ -1,4 +1,3 @@
-//TODO: This should be taken care of somewhere else.
 #include "Arduino.h"
 #include "Queue.h"
 
@@ -9,7 +8,7 @@ class XBEE
   
 public:
 
-
+/*This platform stuff should be implmeneted somewhere else.*/
   enum Platform {Uno, Leonardo, Mega, Due, Digispark, Default};
 
   struct ChipDef_t {
@@ -41,7 +40,7 @@ public:
 	* Reads from the XBEE to the buffer for the specified size.
 	* Returns number of lines read.
 	*/
-	int Read(char& buffer, int size);
+	int Read(char* buffer, int length);
 
 	/**
 	* Reads from the XBEE to the buffer until a new line character
