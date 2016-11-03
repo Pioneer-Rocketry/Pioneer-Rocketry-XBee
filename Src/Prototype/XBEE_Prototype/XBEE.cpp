@@ -110,6 +110,15 @@ void XBEE::Update()
 
   }
 
+  uint8_t * writeByte;
+
+  while(!output->isEmpty())
+  {
+    output->remove(&writeByte);
+    cmdPort->write(*writeByte);
+  }
+
+  
   
 }
 
