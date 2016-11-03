@@ -18,6 +18,9 @@ void XBEE::Initialize(long baud, int serialInterface)
 	else if(baud < 300)
 		baud = 300;
 
+  input = new Queue(MAX_BUFFER_SIZE);
+
+  output = new Queue(MAX_BUFFER_SIZE);
   
   chipDef.boardType = Default;
   chipDef.numSerial = 1;
@@ -96,15 +99,19 @@ void XBEE::Initialize(long baud, int serialInterface)
 
 }
 
-/*int XBEE::Update()
+void XBEE::Update()
 {
 
-  while(cmdPort.available() > 0)
+  while(cmdPort->available() > 0)
   {
-    cmdPort.read();
+    uint8_t readByte = cmdPort->read();
+
+    input->add(readByte);
+
   }
+
   
-}*/
+}
 
 
 

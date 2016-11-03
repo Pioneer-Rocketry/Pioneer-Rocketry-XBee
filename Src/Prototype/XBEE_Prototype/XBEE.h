@@ -1,5 +1,6 @@
 //TODO: This should be taken care of somewhere else.
 #include "Arduino.h"
+#include "Queue.h"
 
 #define MAX_BUFFER_SIZE 512
  
@@ -68,6 +69,10 @@ private:
   static struct ChipDef_t chipDef;
 
   static HardwareSerial* cmdPort;
+
+  static Queue * input;
+
+  static Queue * output;
 
 
 };
