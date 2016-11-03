@@ -35,7 +35,7 @@ public:
 	/**
 	* Writes to the XBEE with the specified buffer
 	*/
-	void Write(char& buffer, int length);
+	void Write(char* buffer, int length);
 
 	/**
 	* Reads from the XBEE to the buffer for the specified size.

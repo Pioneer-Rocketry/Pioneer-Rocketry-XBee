@@ -114,6 +114,25 @@ void XBEE::Update()
 }
 
 
+void XBEE::Write(char* buffer, int length)
+{
+  
+  int count = 0;
+  int arrayLength = sizeof(buffer);
+  
+  while(count < length && count < arrayLength) 
+  {
+  
+    input->add(buffer[count]);
+
+    count++;
+  
+  }
+
+}
+
+
+
 
 
 
