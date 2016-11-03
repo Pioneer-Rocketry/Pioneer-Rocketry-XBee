@@ -1,5 +1,7 @@
 //TODO: This should be taken care of somewhere else.
 #include "Arduino.h"
+
+#define MAX_BUFFER_SIZE 512
  
 class XBEE
 {

@@ -96,7 +96,15 @@ void XBEE::Initialize(long baud, int serialInterface)
 
 }
 
+/*int XBEE::Update()
+{
 
+  while(cmdPort.available() > 0)
+  {
+    cmdPort.read();
+  }
+  
+}*/
 
 
 
