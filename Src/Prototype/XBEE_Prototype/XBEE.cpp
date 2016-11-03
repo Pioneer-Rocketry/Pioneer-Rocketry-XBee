@@ -68,7 +68,9 @@ void XBEE::Initialize(long baud, int serialInterface)
   if(serialInterface == 1)
     cmdPort = (HardwareSerial*)&Serial;
 
-#ifdef __AVR_ATmega32U4__
+#ifdef __AVR_ATmega328__
+
+#elif __AVR_ATmega32U4__
 
   else if(serialInterface == 2)
     cmdPort = (HardwareSerial*)&Serial1;
@@ -138,7 +140,7 @@ void XBEE::Write(char* buffer, int length)
   while(count < length && count < arrayLength) 
   {
   
-    output->add(buffer[count]);
+    input->add(buffer[count]);
 
     count++;
   
