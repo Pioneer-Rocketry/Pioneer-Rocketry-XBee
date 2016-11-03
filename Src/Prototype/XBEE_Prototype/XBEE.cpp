@@ -132,7 +132,7 @@ void XBEE::Write(char* buffer, int length)
   while(count < length && count < arrayLength) 
   {
   
-    input->add(buffer[count]);
+    output->add(buffer[count]);
 
     count++;
   
