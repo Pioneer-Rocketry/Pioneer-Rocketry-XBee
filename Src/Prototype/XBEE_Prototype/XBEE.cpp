@@ -18,6 +18,8 @@ void XBEE::Initialize(long baud, int serialInterface)
 	else if(baud < 300)
 		baud = 300;
 
+
+
   input = new Queue(MAX_BUFFER_SIZE);
 
   output = new Queue(MAX_BUFFER_SIZE);
@@ -98,6 +100,7 @@ void XBEE::Initialize(long baud, int serialInterface)
 
 #endif
 
+  cmdPort ->  begin(baud);
 }
 
 void XBEE::Update()
