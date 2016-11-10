@@ -65,8 +65,7 @@ void XBEE::Initialize(long baud, int serialInterface)
     serialInterface = chipDef.numSerial;
   }
 
-  if(serialInterface == 1)
-    cmdPort = (HardwareSerial*)&Serial;
+  cmdPort = (HardwareSerial*)&Serial;
 
 #ifdef __AVR_ATmega328__
 
