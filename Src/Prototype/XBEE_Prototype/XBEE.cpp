@@ -18,6 +18,8 @@ void XBEE::Initialize(long baud, int serialInterface)
 	else if(baud < 300)
 		baud = 300;
 
+
+
   input = new Queue(MAX_BUFFER_SIZE);
 
   output = new Queue(MAX_BUFFER_SIZE);
@@ -65,7 +67,6 @@ void XBEE::Initialize(long baud, int serialInterface)
     serialInterface = chipDef.numSerial;
   }
 
-  if(serialInterface == 1)
     cmdPort = (HardwareSerial*)&Serial;
 
 #ifdef __AVR_ATmega328__
@@ -99,6 +100,7 @@ void XBEE::Initialize(long baud, int serialInterface)
 
 #endif
 
+  cmdPort ->  begin(baud);
 }
 
 void XBEE::Update()
