@@ -24,30 +24,49 @@ Queue::Queue(int s)
 
 void Queue::add(uint8_t byte)
 {
+
 	if(!isFull())
 	{	
+
+    
 		*front = byte;
 
+//    Serial.print("In: ");
+//    Serial.println((char)*front);
+
 		int index = front - array;
+
+//    Serial.print("index: ");
+//    Serial.println(index); 
+
+//    Serial.print("count: ");
+//    Serial.println(count); 
+
 
 		if(index >= size - 1)
 		{
 			front = array;
 		}
 		else
+    {
 			front++;
+      
+    }
 		
 		count ++;
 	}
+
+ 
 }
 
-bool Queue::remove(uint8_t& byte)
+bool Queue::remove(uint8_t * outByte)
 {
 
 	if(!isEmpty())
 	{
-		byte = *back;
-		
+		*outByte = *back;
+
+    
 		int index = back - array;
 
 		if(index >= size - 1)
@@ -55,9 +74,12 @@ bool Queue::remove(uint8_t& byte)
 			back = array;
 		}
 		else
+    {
+//			Serial.println("back increase");
 			back++;
-
+    }
 		count --;
+
 
 		return true;
 
@@ -70,7 +92,7 @@ bool Queue::remove(uint8_t& byte)
 bool Queue::isFull()
 {
 
-	return back == front && count > 0;
+  return back == front && count > 0;
 
 }
 

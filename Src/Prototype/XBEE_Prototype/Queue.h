@@ -13,7 +13,7 @@ public:
 
 	void add(uint8_t byte);
 
-	bool remove(uint8_t& byte);
+	bool remove(uint8_t * outByte);
 
 	bool isFull();
 

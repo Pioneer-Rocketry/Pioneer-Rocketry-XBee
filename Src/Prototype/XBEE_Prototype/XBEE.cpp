@@ -3,9 +3,16 @@
 
 //XBEE::Platform boardType;
 
-struct XBEE::ChipDef_t chipDef;
+struct XBEE::ChipDef_t XBEE::chipDef;
+
+XBEE::Platform boardType;
 
 HardwareSerial* XBEE::cmdPort;
+
+Queue * XBEE::input;
+
+Queue * XBEE::output;
+
 /**
  * serialInterface 1 indicates Serial. serialInterface 2 indicates Serial1....
  */
@@ -73,12 +80,12 @@ void XBEE::Initialize(long baud, int serialInterface)
 
 #elif __AVR_ATmega32U4__
 
-  else if(serialInterface == 2)
+  if(serialInterface == 2)
     cmdPort = (HardwareSerial*)&Serial1;
 
 #elif __AVR_ATmega2560__
 
-  else if(serialInterface == 2)
+  if(serialInterface == 2)
     cmdPort = (HardwareSerial*)&Serial1;
   else if(serialInterface == 3)
     cmdPort = (HardwareSerial*)&Serial2;
@@ -89,14 +96,14 @@ void XBEE::Initialize(long baud, int serialInterface)
            
 #elif __SAM3X8E__
     
-  else if(serialInterface == 2)
+  if(serialInterface == 2)
     cmdPort = (HardwareSerial*)&Serial1;
   else if(serialInterface == 3)
     cmdPort = (HardwareSerial*)&Serial2;
   else if(serialInterface == 4)
     cmdPort = (HardwareSerial*)&Serial3;
-  else if(serialInterface == 5)
-    cmdPort = (HardwareSerial*)&Serial4;
+  //else if(serialInterface == 5)
+  //  cmdPort = (HardwareSerial*)&Serial4;
 
 #endif
 
@@ -106,23 +113,32 @@ void XBEE::Initialize(long baud, int serialInterface)
 void XBEE::Update()
 {
 
+
   while(cmdPort->available() > 0)
   {
     uint8_t readByte = cmdPort->read();
 
     input->add(readByte);
 
+
   }
 
-  uint8_t * writeByte;
+  uint8_t  writeByte;
 
   while(!output->isEmpty())
   {
-    output->remove(*writeByte);
-    cmdPort->write(*writeByte);
-  }
+    output->remove(&writeByte);
 
+//    Serial.print("Out: ");
+//    Serial.println((char) writeByte);
+    cmdPort->print((char) writeByte);
+
+    //delay(100);
+    //Serial.print("WRITE TO CMDPORT: ");
+    //Serial.println(*writeByte);
+  }
   
+  //Serial.print("\n");
   
 }
 
@@ -137,12 +153,11 @@ void XBEE::Write(char* buffer, int length)
 {
   
   int count = 0;
-  int arrayLength = sizeof(buffer);
-  
+  int arrayLength = strlen(buffer);
+ 
   while(count < length && count < arrayLength) 
   {
-  
-    input->add(buffer[count]);
+    output->add(buffer[count]);
 
     count++;
   
@@ -157,7 +172,7 @@ int XBEE::Read(char* buffer, int length)
   {
 
     uint8_t * readByte;
-    input->remove(*readByte);
+    input->remove(readByte);
     cmdPort->write(*readByte);
     
     buffer[count] = *((char*)readByte);
