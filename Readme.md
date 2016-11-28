@@ -1,8 +1,6 @@
 #Pioneer Rocketry XBee [![Build Status](https://travis-ci.org/Pioneer-Rocketry/Pioneer-Rocketry-XBee.svg?branch=master)](https://travis-ci.org/Pioneer-Rocketry/Pioneer-Rocketry-XBee)
 
 
-____
-
 The Pioneer Rocketry XBee project is a lightweight library that offers ease of use with XBee devices. Currently, it only supports serial read/write support.
 
 PRXBee currently offers: 
