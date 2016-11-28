@@ -1,3 +1,3 @@
-[![GitHub version](https://badge.fury.io/gh/Pioneer-Rocketry%2FPioneer-Rocketry-XBee.svg)](https://badge.fury.io/gh/Pioneer-Rocketry%2FPioneer-Rocketry-XBee)
+[![Build Status](https://travis-ci.org/Pioneer-Rocketry/Pioneer-Rocketry-XBee.svg?branch=master)](https://travis-ci.org/Pioneer-Rocketry/Pioneer-Rocketry-XBee)
 
 Pioneer Rocketry XBee project
