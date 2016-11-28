@@ -8,7 +8,5 @@ before_install:
   - tar xf arduino-1.6.5-linux64.tar.xz
   - sudo mv arduino-1.6.5 /usr/local/share/arduino
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
-install:
-  - git clone https://github.com/Pioneer-Rocketry/Pioneer-Rocketry-XBee $PWD/repo
 script:
-  - arduino --verify --board arduino:avr:uno $PWD/repo/Pioneer-Rocketry-XBee/Src/Prototype/XBEE_Prototype/XBEE_Prototype.ino
+  - arduino --verify --board arduino:avr:uno /Src/Prototype/XBEE_Prototype/XBEE_Prototype.ino
