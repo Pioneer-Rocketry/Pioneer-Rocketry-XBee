@@ -7,6 +7,10 @@ before_install:
   - tar xf arduino-1.6.13-linux64.tar.xz
   - sudo mv arduino-1.6.13 /usr/local/share/arduino
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
+install:
+
+  -arduino --install-board "arduino:Arduino SAM Boards (32-bits ARM Cortex-M3):1.6.3"
+  
 script:
 
   - arduino --verify --board arduino:sam:arduino_due_x $PWD/Src/Prototype/XBEE_Prototype/XBEE_Prototype.ino
