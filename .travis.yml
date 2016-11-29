@@ -9,7 +9,7 @@ before_install:
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
 install:
 
-  - arduino --install-boards "arduino:Arduino SAM Boards (32-bits ARM Cortex-M3)"
+  - arduino --install-boards "Arduino SAM Boards (32-bits ARM Cortex-M3)"
   
 script:
 
