@@ -9,11 +9,11 @@ before_install:
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
 install:
 
-  - arduino --install-boards "Arduino SAM Boards (32-bits ARM Cortex-M3)"
+#  - arduino --install-boards "Arduino SAM Boards (32-bits ARM Cortex-M3)"
   
 script:
 
-  - arduino --verify --board arduino:sam:arduino_due_x $PWD/Src/Prototype/XBEE_Prototype/XBEE_Prototype.ino
+#  - arduino --verify --board arduino:sam:arduino_due_x $PWD/Src/Prototype/XBEE_Prototype/XBEE_Prototype.ino
   - arduino --verify --board arduino:avr:uno $PWD/Src/Prototype/XBEE_Prototype/XBEE_Prototype.ino
   - arduino --verify --board arduino:avr:yun $PWD/Src/Prototype/XBEE_Prototype/XBEE_Prototype.ino
   - arduino --verify --board arduino:avr:leonardo $PWD/Src/Prototype/XBEE_Prototype/XBEE_Prototype.ino
