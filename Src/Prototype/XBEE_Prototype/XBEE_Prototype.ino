@@ -19,7 +19,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-
+  delay(5);
 
   char * message = "Hello World\n";
 
