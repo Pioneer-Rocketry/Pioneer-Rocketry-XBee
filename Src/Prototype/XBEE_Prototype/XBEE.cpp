@@ -1,6 +1,8 @@
 
 #include "XBEE.h"
 
+#define WRITE_WAIT_MS 5
+
 //XBEE::Platform boardType;
 
 struct XBEE::ChipDef_t XBEE::chipDef;
@@ -124,22 +126,17 @@ void XBEE::Update()
   }
 
   uint8_t  writeByte;
+  if(millis() - lastWrite >= WRITE_WAIT_MS)
+  {	  
+  	while(!output->isEmpty())
+  	{
+      output->remove(&writeByte);
 
-  while(!output->isEmpty())
-  {
-    output->remove(&writeByte);
-
-//    Serial.print("Out: ");
-//    Serial.println((char) writeByte);
-    cmdPort->print((char) writeByte);
-
-    //delay(100);
-    //Serial.print("WRITE TO CMDPORT: ");
-    //Serial.println(*writeByte);
+      cmdPort->print((char) writeByte);
+	  
+    }
+    lastWrite = millis();
   }
-  
-  //Serial.print("\n");
-  
 }
 
 int XBEE::isAvailable()
