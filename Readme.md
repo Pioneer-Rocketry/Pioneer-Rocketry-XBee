@@ -9,7 +9,6 @@ PRXBee currently offers:
 * Concurrent design - No busy waiting. Just call xbee->Update() to read and write to the XBee device. 
 
 PRXBee plans to offer: 
-* I2C and SPI support
 * Easy to use text based UI support - For readable logging output to XCTU
 * Command triggers - Set commands that can be sent from XCTU in order to trigger events
 
