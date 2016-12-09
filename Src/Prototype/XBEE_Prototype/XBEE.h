@@ -57,7 +57,7 @@ private:
 
   char * line;
   int lineLength;
-
+  long lastWrite = 0;
 
   //Buffers used to read from and write to the XBEE.
   char * outBuffer;
